@@ -1,0 +1,21 @@
+# Contributor: Jon Nordby <jononor@gmail.com>
+
+pkgname=python-augeas
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Python bindings for the augeas configuration tool"
+arch=('any')
+license=('LGPL2')
+url="http://augeas.net"
+depends=('python' 'augeas')
+makedepends=()
+options=()
+source=(http://augeas.net/download/python/$pkgname-$pkgver.tar.gz)
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root=$pkgdir/ --optimize=1 || return 1
+}
+
+md5sums=('428fb2a54dea896131dbae5af10fccac')
+

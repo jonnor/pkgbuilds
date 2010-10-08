@@ -1,0 +1,26 @@
+# Contributor: Jon Nordby <jononor@gmail.com>
+
+pkgname=qpixman
+pkgver=0.13.3
+pkgrel=1
+pkgdesc="Modified pixman for SPICE"
+arch=('i686' 'x86_64')
+url="http://www.spice-space.org"
+license=('GPL')
+depends=('glibc')
+makedepends=()
+install=
+_tarballname=$pkgname-$pkgver-git20090127
+source=($url/download/$_tarballname.tar.bz2)
+noextract=()
+md5sums=('fcc56cfcd808c8892e39613c1d8db9c5')
+
+build() {
+  cd "$srcdir/$_tarballname"
+
+  ./autogen.sh -includedir=/usr/include --libdir=/usr/lib
+  make || return 1
+  make DESTDIR="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:

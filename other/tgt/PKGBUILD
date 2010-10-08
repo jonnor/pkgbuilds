@@ -1,0 +1,24 @@
+# Contributor: Your Name <jononor@gmail.com>
+pkgname=tgt
+pkgver=0.9.10
+pkgrel=1
+pkgdesc="an easy to use SCSI target driver (iSCSI, Fibre Channel, SRP, etc)."
+arch=(i686 x86_64)
+url="http://stgt.berlios.de/"
+license=('GPL')
+depends=(openssl)
+makedepends=()
+optdepends=()
+install=
+source=(http://stgt.berlios.de/releases/$pkgname-$pkgver.tar.bz2)
+md5sums=('d06e2dcef6ac6c975311e88083d8ef26')
+
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  make ISCI=1 || return 1
+  make DESTDIR="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:

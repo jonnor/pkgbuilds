@@ -1,0 +1,27 @@
+# Contributor: Jon Nordby <jononor@gmail.com>
+
+pkgname=qcairo
+pkgver=1.8.7.1
+pkgrel=1
+pkgdesc="Modified cairo for SPICE"
+arch=('i686' 'x86_64')
+url="http://www.spice-space.org"
+license=('GPL')
+depends=('qpixman')
+makedepends=()
+install=
+_tarballname=$pkgname-$pkgver-git74d6b5
+source=($url/download/$_tarballname.tar.bz2)
+noextract=()
+md5sums=('3ccb05dd0840060f0792444b340d2b94')
+
+build() {
+  cd "$srcdir/$_tarballname"
+
+  ./autogen.sh --disable-xlib --disable-ps --disable-pdf \
+     --disable-svg --includedir=/usr/include/ --libdir=/usr/lib
+  make || return 1
+  make DESTDIR="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:
