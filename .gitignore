@@ -1,8 +1,9 @@
 # groupdir/packagedir/
-*/*/*.pkg.tar.*
-*/*/*.src.tar.gz
+*.pkg.tar.*
+*.src.tar.gz
 
 */*/src
 */*/pkg
 
-*/*/*.bz2
+*.bz2
+*.gz
