@@ -1,5 +1,10 @@
-maint: Packages I maintain for AUR
-
+== Contents ==
+maint: Packages I maintain for AUR, https://aur.archlinux.org/packages.php?SeB=m&K=jonnor
 custom: Custom versions of packages in official repositories
-other: Misc stuff. Some
-spice: Packages for the initial release of SPICE
+
+other: Misc stuff. Might be experimental/semi-broken and thus not worth pushing to AUR
+spice: Packages for the initial release of SPICE. In AUR, but not maintained (by me)
+
+== Contact ==
+If there are any questions or issues, contact me at
+jononor@gmail.com
