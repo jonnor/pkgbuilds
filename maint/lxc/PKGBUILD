@@ -3,15 +3,15 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=lxc
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('i686' 'x86_64')
 url="http://lxc.sourceforge.net/"
 depends=('bash' 'perl')
 license=('LGPL')
-source=("http://downloads.sourceforge.net/sourceforge/lxc/$pkgname-$pkgver.tar.gz")
-md5sums=('5c9c6889ba1255217078ea5d1aaf0c82')
+source=("http://lxc.sourceforge.net/download/lxc/$pkgname-$pkgver.tar.gz")
+md5sums=('c12fb813362b37d783ca2c9551ccd716')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
