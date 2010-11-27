@@ -1,7 +1,7 @@
 # Contributor: Jon Nordby <jononor@gmail.com>
 
 pkgname=augeas
-pkgver=0.7.2
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="A program for editing configuration files and a configuration API"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('readline')
 makedepends=('gcc' 'bison' 'flex')
 options=(!libtool)
 source=(http://augeas.net/download/$pkgname-$pkgver.tar.gz)
-md5sums=('0fe232b7f37a6e468e81019895fd01f4')
+md5sums=('e3ddce5305a15bdb876ef7feec9214d1')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
