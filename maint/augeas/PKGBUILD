@@ -8,7 +8,6 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://augeas.net"
 depends=('readline')
-makedepends=('gcc' 'bison' 'flex')
 options=(!libtool)
 source=(http://augeas.net/download/$pkgname-$pkgver.tar.gz)
 md5sums=('e3ddce5305a15bdb876ef7feec9214d1')
