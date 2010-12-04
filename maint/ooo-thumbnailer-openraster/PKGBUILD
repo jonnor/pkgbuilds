@@ -1,0 +1,40 @@
+# Maintainer: max.bra <max.bra at alice dot it>
+# Contributor: max.bra <max.bra at alice dot it>
+
+pkgname=ooo-thumbnailer-openraster
+_pkgname=ooo-thumbnailer
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="ooo-thumbnailer is a lightweight OpenOffice.org document thumbnailer that can be used by Nautilus to create thumbnails for your documents"
+arch=('any')
+url="https://launchpad.net/ooo-thumbnailer"
+license=('GPL')
+depends=('gconf' 'imagemagick' 'unzip')
+provides=($_pkgname)
+conflicts=($_pkgname)
+makedepends=()
+optdepends=()
+install=$_pkgname.install
+#source=(${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz)
+_baseurl=http://mentors.debian.net/debian/pool/main/o
+source=($_baseurl/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz
+        add-openraster-support.patch)
+md5sums=('7a7779bef05344e2cc6d827237a759e4'
+          'ce5b3793e3e2001f8b5579e034d30515')
+
+build() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    pwd
+    # OpenRaster support
+    patch < ../../add-openraster-support.patch
+
+    #arch stuff
+    sed -i 's/openofficeorg3-//' $_pkgname
+
+    #BUG: no thumbs for paths with spaces
+    sed -i 's/`dirname "$ifile"`/"`dirname "$ifile"`"/' $_pkgname
+
+    install -D -m644 $_pkgname.schemas \
+        "${pkgdir}"/usr/share/gconf/schemas/$_pkgname.schemas
+    install -D -m755 $_pkgname "${pkgdir}"/usr/bin/$_pkgname
+}

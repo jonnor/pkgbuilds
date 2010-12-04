@@ -1,0 +1,32 @@
+=== modified file 'ooo-thumbnailer.schemas'
+--- ooo-thumbnailer.schemas	2010-09-18 17:33:52 +0000
++++ ooo-thumbnailer.schemas	2010-10-18 00:13:09 +0000
+@@ -3367,5 +3367,27 @@
+         <long>產生 OpenOffice 1.x 算式縮圖所用的指令加上參數。</long>
+       </locale>
+     </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/thumbnailers/image@openraster/enable</key>
++      <applyto>/desktop/gnome/thumbnailers/image@openraster/enable</applyto>
++      <owner>ooo-thumbnailer</owner>
++      <type>bool</type>
++      <default>true</default>
++      <locale name="C">
++          <short>Enable thumbnailing for OpenRaster documents</short>
++          <long>Boolean options available, true enables thumbnailing and false disables the creation of new thumbnails</long>
++      </locale>
++    </schema>
++    <schema>
++      <key>/schemas/desktop/gnome/thumbnailers/image@openraster/command</key>
++      <applyto>/desktop/gnome/thumbnailers/image@openraster/command</applyto>
++      <owner>ooo-thumbnailer</owner>
++      <type>string</type>
++      <default>ooo-thumbnailer %i %o %s</default>
++      <locale name="C">
++        <short>Thumbnail command for OpenRaster documents</short>
++        <long>Valid command plus arguments for the OpenRaster document thumbnailer</long>
++      </locale>
++    </schema>
+   </schemalist>
+ </gconfschemafile>
+

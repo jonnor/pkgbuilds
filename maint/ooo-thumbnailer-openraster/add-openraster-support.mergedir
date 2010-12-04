@@ -1,0 +1,66 @@
+# Bazaar merge directive format 2 (Bazaar 0.90)
+# revision_id: jononor@gmail.com-20101017203146-308nf8qsq0ocxg6b
+# target_branch: http://bazaar.launchpad.net/~flimm/ooo-\
+#   thumbnailer/trunk/
+# testament_sha1: 6ed77b2b142c8554120cdc57752ea738a4a7b328
+# timestamp: 2010-10-17 22:38:11 +0200
+# base_revision_id: daviddlowe.flimm@gmail.com-20100920120230-\
+#   ylke52o1zx3wdkxg
+# 
+# Begin patch
+=== modified file 'ooo-thumbnailer.schemas'
+--- ooo-thumbnailer.schemas	2010-09-18 17:33:52 +0000
++++ ooo-thumbnailer.schemas	2010-10-17 20:31:46 +0000
+@@ -3367,5 +3367,28 @@
+         <long>產生 OpenOffice 1.x 算式縮圖所用的指令加上參數。</long>
+       </locale>
+     </schema>
++    <schema>
++    <key>/schemas/desktop/gnome/thumbnailers/image@openraster/enable</key>
++    <applyto>/desktop/gnome/thumbnailers/image@openraster/enable</applyto>
++    <owner>ooo-thumbnailer</owner>
++    <type>bool</type>
++    <default>true</default>
++    <locale name="C">
++        <short>Enable thumbnailing for OpenRaster documents</short>
++        <long>Boolean options available, true enables thumbnailing and false disables the creation of new thumbnails</long>
++    </locale>
++    </schema>
++    <schema>
++    <key>/schemas/desktop/gnome/thumbnailers/image@openraster/command</key>
++     <applyto>/desktop/gnome/thumbnailers/image@openraster/command</applyto>
++     <owner>ooo-thumbnailer</owner>
++     <type>string</type>
++     <default>ooo-thumbnailer %i %o %s</default>
++        <locale name="C">
++          <short>Thumbnail command for OpenRaster documents</short>
++          <long>Valid command plus arguments for the OpenRaster document thumbnailer</long>
++        </locale>
++     </locale>
++    </schema>
+   </schemalist>
+ </gconfschemafile>
+
+# Begin bundle
+IyBCYXphYXIgcmV2aXNpb24gYnVuZGxlIHY0CiMKQlpoOTFBWSZTWfW5fFQAAfffgGUQUmf/93oR
+lQC////wUATe7sdYcd10zoU7YcJRKntMpqaeTQTelPTUyaafpI9RkeoAA0EoSYmmiZpCYTT1Cep6
+hp6mIMAIAlNTIiTT1NGagaaNDI0DTRiAADmmJgATABMAAJgACYJIk1PTSmwmTE1NT9VP0ymKH6Ub
+1TR6RkZNPUiki/iv5fqb3oEYsCxKLuFgH+aRhxgO9aEA6Zj31XrtvfiQl60LIoK/tTcsj9r02GnX
+8ns8ybKSnKfnW55TxsJOeoyi10WP837L39+OWn7I33GRNwcbvUE5xSN+7+/ecPBFloT9yRtDNW9h
+xjxxZoH1BwurpkluYKRiAMTF0uT6XFAMkMJkyTKk5jihAfv7YNsUxQExQmksDgRhOB9hT2o5SEfF
+hevA6RVjmpKtNuZp9JMYxK5prbaOQTHfDTnJ4ZtSPxyvqheaFEUKKgKWzviU2rv0YcncwSibZmA6
+pYZVimTUS6ZcrqVR1yFR2xqt1URYtL+pG2qg1jJsrGAhctpjUYlj1u6XYvTQaiurlCt2czNkOiqJ
+bMlkYvwISiXGs+pfimviJOt26xE253rDmzzmjFpK8eNJ5ppmCUI8mh+aYmkSehXDMNcqGBA0ynUu
+W2F9gYRsSa4XWhUlR77m5U7KpULgV1q/dWVS0aPCfMzki3ipCWg5ZNWeMpod5P27N9FnOpLDrw7U
+ztTlzNLBE1D0oVpQUIgVM71DycHZnDkRgQj0z3SPiIpvR8SDV9WhJM8wTt40K75BQ2Z9Jt1EYnTA
+OE+xSdXX4pHBWF0oJHs6S9EfftuoWXdVrUHkfI87kRiuYSB1T3BHQN9YRF5TcLzDxwzwJW0CYQDo
+i+0G0G+65CbhTebeXoQJt+UQ1G4o1qBSEjBaTfSD0ei4KOTkmGoq/KpQxFhkYFhk1pSDEdl2mWrY
+g8FsDceIuD1SMr12vRhQqo8IWLFjZAoZDUYdenQ9ZW5w59GHsW7qYUILw1NXDGs6p06lvxBkwW5v
+BXA2rBUxxkFRUEqVxCj8PTIyyhSLLC8HM/cXHPjLzCbo8Rz+hkwsqQCWPZPtmOQOC0xBwl12Bw0w
+zN9bbSMaS3X6eq6A+6nwMELRMkrwoJhl4BbAs/3vyjTiDV3BzoqrPUadXAiqCBvCQVLUFmEAk+Iy
+6RMToOw6eDAoEMwgP2W/rYWoYsCUohX5IrK0jeDhILUiAQXBUgGwJpw30kmCKI0EchOZNGwrgLXJ
+sABiagVAimcIzDTCAx7YOJTBmFQwmWfOhH6LkGKMleLKyRqkdAZH3rR1qD2S2JUSRl6/DxY18IbC
+28PzB92SrSiHtBcuwLUkkxC03jg3zvVUY4B5A9B9gZKbw4EofMbIZRq4E1SkmATMYd0JY4mxczWD
+x1btbKV6AhDNQMre6FBJaB5ZxXLDsaaDOxVK8ybdEkTCEgqXl9hQLQJhzxfzvjgNcQBiH7GDMBXM
+ixfkM7LAHVVFW0hnqHwDaFiZp3OpssdpkYxOdYcwDXqxhYb/iSsTBoj+DkS+S0A9FtFmqV7704RI
+4ksCkKIDvJHH+LuSKcKEh63L4qA=
