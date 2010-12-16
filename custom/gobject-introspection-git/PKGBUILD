@@ -1,7 +1,7 @@
 # Contributor: <arsenm2@rpi.edu>
 
 pkgname=gobject-introspection-git
-pkgver=20101203
+pkgver=20101204
 pkgrel=1
 pkgdesc="GObject Introspection"
 arch=('i686' 'x86_64')
@@ -13,6 +13,8 @@ makedepends=('git' 'python' 'libtool' 'pkgconfig' 'autoconf' 'gnome-common' 'gtk
 provides=('gobject-introspection=0.10.0')
 conflicts=('gobject-introspection')
 options=(!makeflags docs)
+source=(0001-gir-Add-cairo_format_t.patch)
+md5sums=('d99928e8f0613d4978a183b176e72495')
 
 _gitroot="git://git.gnome.org/gobject-introspection"
 _gitname="gobject-introspection"
@@ -35,6 +37,8 @@ build() {
   cd $srcdir/$_gitname-build
 
   export PYTHON=/usr/bin/python2
+
+  patch -p1 < "$srcdir"/0001-gir-Add-cairo_format_t.patch
 
   msg "Starting build"
   ./autogen.sh

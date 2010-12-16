@@ -1,0 +1,43 @@
+From de61a4060fe4a9fc0bece994c677ffdaf2fbc0b5 Mon Sep 17 00:00:00 2001
+From: Jon Nordby <jononor@gmail.com>
+Date: Sat, 4 Dec 2010 01:37:27 +0100
+Subject: [PATCH] gir: Add cairo_format_t
+
+---
+ gir/cairo-1.0.gir |   20 ++++++++++++++++++++
+ 1 files changed, 20 insertions(+), 0 deletions(-)
+
+diff --git a/gir/cairo-1.0.gir b/gir/cairo-1.0.gir
+index dbec19d..c028078 100644
+--- a/gir/cairo-1.0.gir
++++ b/gir/cairo-1.0.gir
+@@ -22,6 +22,26 @@
+               value="12288"
+               c:identifier="CAIRO_CONTENT_COLOR_ALPHA"/>
+     </enumeration>
++    <enumeration name="Format" c:type="cairo_format_t">
++      <member name="INVALID"
++              value="-1"
++              c:identifier="CAIRO_FORMAT_INVALID"/>
++      <member name="ARGB32"
++              value="0"
++              c:identifier="CAIRO_FORMAT_ARGB32"/>
++      <member name="RGB24"
++              value="1"
++              c:identifier="CAIRO_FORMAT_RGB24"/>
++      <member name="A8"
++              value="2"
++              c:identifier="CAIRO_FORMAT_A8"/>
++      <member name="A1"
++              value="3"
++              c:identifier="CAIRO_FORMAT_A1"/>
++      <member name="RGB16_565"
++              value="4"
++              c:identifier="CAIRO_FORMAT_RGB16_565"/>
++    </enumeration>
+     <record name="FontOptions" c:type="cairo_font_options_t" foreign="1"/>
+     <record name="FontType" c:type="cairo_font_type_t" foreign="1"/>
+     <record name="FontFace" c:type="cairo_font_face_t" foreign="1"/>
+-- 
+1.7.3.2
+
