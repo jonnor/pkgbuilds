@@ -2,7 +2,7 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=oratools-git
-pkgver=20100926
+pkgver=20101224
 pkgrel=1
 pkgdesc="Tools for OpenRaster development."
 arch=(any)
@@ -35,5 +35,7 @@ build() {
   cd "$srcdir/$_gitname-build"
 
   cd oratools
+  find . -type f -exec sed -i 's~^#.*env python~#!/usr/bin/env python2~' {} +  
   ./setup.py install --root="$pkgdir"
 } 
+
