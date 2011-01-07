@@ -1,0 +1,53 @@
+# Maintainer: Jon Nordby <jononor@gmail.com>
+
+pkgname=mock-git
+_pkgname=mock
+pkgver=20110107
+pkgrel=1
+pkgdesc="A 'simple' chroot build environment manager for building RPMs."
+arch=('x86_64' 'i686')
+url="https://fedorahosted.org/mock/"
+license=('GPL')
+depends=('python2' 'python2-decoratortools' 'yum')
+makedepends=('git')
+optdepends=()
+provides=($_pkgname)
+conflicts=($_pkgname)
+install=mock.install
+
+_gitroot="git://git.fedorahosted.org/git/mock.git"
+_gitname="mock"
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [ -d $_gitname ] ; then
+    cd $_gitname && git pull origin
+    msg "The local files are updated."
+  else
+    git clone $_gitroot $_gitname
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  # BUILD
+  export PYTHON=/usr/bin/python2
+  ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+
+  make DESTDIR="$pkgdir/" install
+  sed -i -e "s|/usr/bin/python|/usr/bin/python2|" ${pkgdir}/usr/sbin/mock
+}
+
+# vim:set ts=2 sw=2 et:

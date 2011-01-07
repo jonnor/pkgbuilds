@@ -1,0 +1,32 @@
+
+post_install() {
+  # Add group
+  getent group mock >/dev/null 2>&1 || usr/sbin/groupadd -g 490 mock
+  if getent passwd mock > /dev/null 2>&1; then
+      usr/sbin/usermod -c 'Mock user' -s /bin/false mock > /dev/null 2>&1
+  else
+      usr/sbin/useradd -c 'Mock user' -u 490 -g mock -s /bin/false mock
+  fi
+  usr/bin/passwd -l mock &>/dev/null
+
+  echo ">>> NOTE: users must be in group 'mock' to use mock"
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+#post_upgrade() {
+  # do something here
+#}
+
+pre_remove() {
+  # Remove group
+  getent passwd mock >/dev/null 2>&1 && userdel mock
+  getent group mock >/dev/null 2>&1 && groupdel mock
+ 
+}
+
+# vim:set ts=2 sw=2 et:
