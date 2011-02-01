@@ -1,0 +1,43 @@
+# Maintainer: Jon Nordby <jononor@gmail.com>
+
+_pkgname=spectacle
+pkgname=$_pkgname-git
+pkgver=20110202
+pkgrel=1
+pkgdesc="Tool to work with .spec files (for RPM packaging)"
+arch=('any')
+url="http://wiki.meego.com/Spectacle"
+license=('GPL')
+depends=('python2' 'python-cheetah' 'python-yaml')
+makedepends=('git')
+provides=($_pkgname)
+conflicts=($_pkgname)
+source=(0001-Build-Install-python-code-to-DESTDIR.patch)
+md5sums=('23ee72d616aaef790ca87f3e11812446')
+
+_gitroot="git://gitorious.org/meego-developer-tools/spectacle.git"
+_gitname="spectacle"
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [ -d $_gitname ] ; then
+    cd $_gitname && git pull origin
+    msg "The local files are updated."
+  else
+    git clone $_gitroot $_gitname
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting make..."
+
+  rm -rf "$srcdir/$_gitname-build"
+  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+
+  # BUILD HERE
+  patch -p1 < $srcdir/0001-Build-Install-python-code-to-DESTDIR.patch
+  sed -i -e "s|python setup.py|python2 setup.py|" Makefile
+  make DESTDIR="$pkgdir/" install
+} 
