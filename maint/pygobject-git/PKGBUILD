@@ -5,12 +5,12 @@
 
 _pkgname=pygobject
 pkgname=$_pkgname-git
-pkgver=20110408
+pkgver=20110416
 pkgrel=1
 pkgdesc="Python bindings for GObject - git version"
 arch=('i686' 'x86_64')
 license=('LGPL')
-depends=('python2' 'glib2>=2.26.0' 'pycairo>=1.8.10' 'gobject-introspection>=0.9.6')
+depends=('python2' 'glib2>=2.26.0' 'pycairo>=1.8.10' 'gobject-introspection>=0.10.2')
 conflicts=('pygobject')
 provides=('pygobject=2.20.0')
 depends=()
@@ -38,6 +38,7 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
+  export PYTHON=/usr/bin/python2
   # BUILD
   ./autogen.sh --prefix=/usr
   make
