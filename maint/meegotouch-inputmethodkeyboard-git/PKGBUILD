@@ -13,6 +13,7 @@ makedepends=('git')
 depends=('qt' 'libmeegotouch' 'meegotouch-inputmethodframework' 'meegotouch-inputmethodengine')
 provides=($_pkgname)
 conflicts=($_pkgname)
+install=meegotouch-inputmethodkeyboard.install
 source=()
 md5sums=()
 
