@@ -3,18 +3,18 @@
 
 _pkgname=meegotouch-inputmethodframework
 pkgname=$_pkgname-git
-pkgver=20101220
-pkgrel=2
+pkgver=20110528
+pkgrel=1
 pkgdesc="MeegoTouch Inputmethod Framework"
 arch=('x86_64' 'i686')
-url="http://wiki.meego.com/MeeGo_Touch_Framework"
+url="http://wiki.meego.com/Maliit"
 license=('LGPL')
 makedepends=('git')
-depends=('qt' 'libmeegotouch' 'meegotouch-feedbackreactionmaps')
+depends=('qt' 'libmeegotouch')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=('0001-Disable-building-of-tests-and-applets-hacky.patch')
-md5sums=('81edf06e506de63fc039cd257345ca3b')
+source=()
+md5sums=()
 
 _gitroot="git://gitorious.org/meegotouch/meegotouch-inputmethodframework.git"
 _gitname="$_pkgname"
@@ -37,15 +37,9 @@ build() {
   git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
   cd "$srcdir/$_gitname-build"
 
-  patch -p1 < "$srcdir/0001-Disable-building-of-tests-and-applets-hacky.patch"
-
   # BUILD
-  qmake
+  # Note: libmeegotouch dep can be removed using CONFIG+=nomeegotouch
+  qmake CONFIG+=notests CONFIG+=noduicontrolpanel
   make
   make install INSTALL_ROOT="$pkgdir/"
-
-  # Workaround because install_prf does not show up in
-  # src/Makefile like it should
-  install -D -m 0644 src/meegoimframework.prf \
-    $pkgdir/usr/share/qt/mkspecs/features/meegoimframework.prf
 } 
