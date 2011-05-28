@@ -41,5 +41,10 @@ build() {
   # BUILD
   qmake -r ./ CONFIG+=notests CONFIG+=noreactionmap
   make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+
   make install INSTALL_ROOT="$pkgdir/"
 } 

@@ -42,5 +42,10 @@ build() {
   # Note: libmeegotouch dep can be removed using CONFIG+=nomeegotouch
   qmake CONFIG+=notests CONFIG+=noduicontrolpanel
   make
+}
+
+package() {
+  cd "$srcdir/$_gitname-build"
+
   make install INSTALL_ROOT="$pkgdir/"
 } 
