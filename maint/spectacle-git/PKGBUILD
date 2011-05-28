@@ -2,18 +2,18 @@
 
 _pkgname=spectacle
 pkgname=$_pkgname-git
-pkgver=20110202
+pkgver=20110528
 pkgrel=1
 pkgdesc="Tool to work with .spec files (for RPM packaging)"
 arch=('any')
 url="http://wiki.meego.com/Spectacle"
 license=('GPL')
-depends=('python2' 'python-cheetah' 'python-yaml')
+depends=('python2' 'python-cheetah' 'python2-yaml')
 makedepends=('git')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=(0001-Build-Install-python-code-to-DESTDIR.patch)
-md5sums=('23ee72d616aaef790ca87f3e11812446')
+source=()
+md5sums=()
 
 _gitroot="git://gitorious.org/meego-developer-tools/spectacle.git"
 _gitname="spectacle"
@@ -37,7 +37,6 @@ build() {
   cd "$srcdir/$_gitname-build"
 
   # BUILD HERE
-  patch -p1 < $srcdir/0001-Build-Install-python-code-to-DESTDIR.patch
-  sed -i -e "s|python setup.py|python2 setup.py|" Makefile
+  export PYTHON=/usr/bin/python2
   make DESTDIR="$pkgdir/" install
 } 
