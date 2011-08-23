@@ -1,7 +1,7 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=dracut
-pkgver=010
+pkgver=013
 pkgrel=1
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('docbook-xsl')
 backup=('etc/dracut.conf')
 install=
 source=(http://www.kernel.org/pub/linux/utils/boot/dracut/dracut-$pkgver.tar.gz)
-md5sums=('5ae0d1a67f3899cbc4f02eacfb71a6c4')
+md5sums=('540c3fa966e65cf4221f3830d737ffe3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
