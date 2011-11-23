@@ -2,18 +2,17 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=maliit-plugins
-pkgver=0.80.5
+pkgver=0.81.0
 pkgrel=1
 pkgdesc="Maliit Input Methods - Plugins"
 arch=('x86_64' 'i686')
 url="http://maliit.org"
 license=('LGPL')
 depends=('qt' 'maliit-framework')
-source=(https://gitorious.org/maliit/${pkgname}/archive-tarball/${pkgver})
-md5sums=('070538f52bf2d5c24e90ee092dcf916d')
+source=(http://maliit.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 
 build() {
-  cd "$srcdir/maliit-${pkgname}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   # BUILD
   qmake -r . CONFIG+=notests
@@ -21,7 +20,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/maliit-${pkgname}"
+  cd "$srcdir/${pkgname}-${pkgver}"
 
   make install INSTALL_ROOT="$pkgdir/"
 } 
