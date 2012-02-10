@@ -2,7 +2,7 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=maliit-plugins
-pkgver=0.81.0
+pkgver=0.81.3
 pkgrel=1
 pkgdesc="Maliit Input Methods - Plugins"
 arch=('x86_64' 'i686')
@@ -10,6 +10,7 @@ url="http://maliit.org"
 license=('LGPL')
 depends=('qt' 'maliit-framework')
 source=(http://maliit.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
+md5sums=('2b0ec08445521048487b8f50868367f9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

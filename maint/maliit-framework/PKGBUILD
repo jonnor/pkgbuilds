@@ -2,7 +2,7 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=maliit-framework
-pkgver=0.81.0.1
+pkgver=0.81.3
 pkgrel=1
 pkgdesc="Maliit Input Methods - Framework"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('qt' 'gtk2' 'gtk3')
 install=${pkgname}.install
 source=(http://maliit.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('ce2da725df87be75a0d340414469a170')
+md5sums=('111752b61fee68a7bb1b54c9df1cdddd')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
