@@ -3,7 +3,7 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=20110528
+pkgver=20120703
 pkgrel=1
 pkgdesc="Linux Containers"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
   # BUILD
   ./autogen.sh
   ./configure --prefix=/usr --libexecdir=/usr/bin --sysconfdir=/etc \
-    --localstatedir=/var --disable-docs
+    --localstatedir=/var --disable-doc
   make
 }
 
