@@ -1,0 +1,53 @@
+# Maintainer: Jon Nordby <jononor@gmail.com>
+
+pkgname=underweb-bzr
+pkgver=3
+pkgrel=1
+pkgdesc=""
+arch=('i686' 'x86_64')
+url=""
+license=('GPL')
+groups=()
+depends=('gstreamer-0.10' 'gtk3')
+makedepends=('bzr' 'vala' 'gobject-introspection')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+source=()
+noextract=()
+md5sums=() #generate with 'makepkg -g'
+
+_bzrtrunk=https://code.launchpad.net/~august-alien/underweb/trunk
+_bzrmod=underweb
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to Bazaar server...."
+
+  if [[ -d "$_bzrmod" ]]; then
+    cd "$_bzrmod" && bzr --no-plugins pull "$_bzrtrunk" -r "$pkgver"
+    msg "The local files are updated."
+  else
+    bzr --no-plugins branch "$_bzrtrunk" "$_bzrmod" -q -r "$pkgver"
+  fi
+
+  msg "Bazaar checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/$_bzrmod-build"
+  cp -r "$srcdir/$_bzrmod" "$srcdir/$_bzrmod-build"
+  cd "$srcdir/$_bzrmod-build"
+
+  # BUILD HERE
+  make
+}
+
+package() {
+  cd "$srcdir/$_bzrmod-build"
+  make DESTDIR="$pkgdir/" install
+}
+
+# vim:set ts=2 sw=2 et:
