@@ -1,13 +1,13 @@
 # Maintainer: Jon Nordby <jononor@gmail.com>
 
 pkgname=pycessing-git
-pkgver=20121120
+pkgver=20130409
 pkgrel=1
 pkgdesc="An easy-to-use Python framework inspired by Processing"
 arch=('any')
 url="http://pycessing.org"
 license=('GPL3')
-depends=(python2-pygame python2-pyqt python2-cairo python2-qscintilla)
+depends=(python2-pygame python2-pyqt python2-cairo python2-qscintilla python2-distribute)
 makedepends=('git')
 provides=()
 conflicts=()
