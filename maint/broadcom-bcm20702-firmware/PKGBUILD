@@ -1,0 +1,24 @@
+# Maintainer: Jon Nordby <jononor@gmail.com>
+
+pkgname=broadcom-bcm20702
+pkgver=2014.07
+pkgrel=1
+epoch=
+pkgdesc="Firmware for Broadcom Bluetooth card found in Dell XPS 13"
+arch=('i686' 'x86_64')
+url=""
+license=('proprietary')
+depends=()
+makedepends=('cabextract' 'bluez-utils')
+source=('http://download.windowsupdate.com/d/msdownload/update/driver/drvs/2014/07/20662520_6c535fbfa9dca0d07ab069e8918896086e2af0a7.cab')
+md5sums=('e7163c3e02906f075bac01a5489feacb')
+
+build() {
+    #cabextract 20662520_6c535fbfa9dca0d07ab069e8918896086e2af0a7.cab
+    hex2hcd BCM20702A1_001.002.014.1443.1572.hex
+}
+
+package() {
+    mkdir -p ${pkgdir}/lib/firmware/brcm
+    mv BCM20702A1_001.002.014.1443.1572.hcd ${pkgdir}/lib/firmware/brcm/BCM20702A0-0a5c-216f.hcd
+}
