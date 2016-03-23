@@ -1,0 +1,45 @@
+# Maintainer: Your Name <jononor@gmail.com>
+
+pkgname=libccv
+pkgver=bc39526
+pkgrel=1
+pkgdesc=""
+arch=(i686 x86_64)
+url=""
+license=('BSD')
+groups=()
+depends=()
+makedepends=('git')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+replaces=()
+backup=()
+options=()
+install=
+source=('libccv::git+https://github.com/liuliu/ccv.git')
+noextract=()
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/${pkgname}"
+    git describe --long --always --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$srcdir/${pkgname}"
+}
+
+build() {
+	cd "$srcdir/${pkgname}"
+    cd lib
+	./configure --prefix=/usr
+	make
+}
+
+package() {
+	cd "$srcdir/${pkgname}"
+    cd lib
+    mkdir -p "$pkgdir/usr/local/lib/"
+	cp ./libccv.a "$pkgdir/usr/local/lib/"
+	cp ./ccv.h "$pkgdir/usr/local/lib/"
+}
