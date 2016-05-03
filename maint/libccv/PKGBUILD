@@ -1,8 +1,8 @@
 # Maintainer: Your Name <jononor@gmail.com>
 
 pkgname=libccv
-pkgver=bc39526
-pkgrel=1
+pkgver=07fc691
+pkgrel=4
 pkgdesc=""
 arch=(i686 x86_64)
 url=""
@@ -27,6 +27,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname}"
+    git clean -dfx
 }
 
 build() {
